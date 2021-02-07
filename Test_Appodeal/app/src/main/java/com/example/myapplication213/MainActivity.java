@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements BannerCallbacks, 
     private int counter1 = 0;
     private int counter2 = 0;
     private boolean a = false;
-    private Button ButtonHide;
+    //private Button buttonRecycle;
     // private boolean a = false;
 
 
@@ -394,8 +394,8 @@ public class MainActivity extends AppCompatActivity implements BannerCallbacks, 
 
 
     private void InitViews(){
-        ///showNativeAdsList= findViewById(R.id.show_native_ads);
-        ButtonHide = findViewById(R.id.buttonHide);
+        //showNativeAdsList= findViewById(R.id.show_native_ads);
+        //ButtonRecycle = findViewById(R.id.buttonRecycle);
         showBannerAd = findViewById(R.id.show_banner);
         showNativeAd = findViewById(R.id.show_native);
         showRewardedAd = findViewById(R.id.show_rewarded);
