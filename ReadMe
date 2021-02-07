@@ -1,0 +1,17 @@
+Question:
+
+Hello, team!
+We got an email from google play about violations of their rules. They told us that we place
+interstitial ads so that they suddenly appear when a user is focused on a task at hand (e.g.
+playing a game, filling out a form, reading content) may lead to accidental clicks and often
+creates a frustrating user experience(see on the screenshot below).
+Could you please describe how we can fix it?
+Kind regards,
+____________________________________________________________________________________________
+Answer:
+
+Hello,...
+In order not to have problems with Google Play about interstitial ads,you just don't need to 
+call "show" methods in your code when user viewing content,playing a game,filling out a form,
+and use intestitial ads only when navigating between pages.
+Kind regards,
