@@ -21,6 +21,7 @@ import com.appodeal.ads.NativeAd;
 import com.appodeal.ads.NativeAdView;
 import com.appodeal.ads.NativeCallbacks;
 import com.appodeal.ads.RewardedVideoCallbacks;
+import com.appodeal.ads.api.App;
 import com.appodeal.ads.native_ad.views.NativeAdViewAppWall;
 import com.appodeal.ads.native_ad.views.NativeAdViewContentStream;
 import com.appodeal.ads.utils.Log;
@@ -53,7 +54,9 @@ public class MainActivity extends AppCompatActivity implements BannerCallbacks, 
     private int counter = 0;
     private int counter1 = 0;
     private int counter2 = 0;
-   // private boolean a = false;
+    private boolean a = false;
+    private Button ButtonHide;
+    // private boolean a = false;
 
 
 
@@ -108,14 +111,19 @@ public class MainActivity extends AppCompatActivity implements BannerCallbacks, 
     private void InitListeners() {
 
 
-        showBannerAd.setOnClickListener(v -> {
+        showBannerAd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            counter++;
-            Appodeal.show(MainActivity.this, Appodeal.BANNER_TOP, "ban");
+            if (Appodeal.show(MainActivity.this, Appodeal.BANNER_TOP, "ban"));{
+//                Appodeal.hide(MainActivity.this, Appodeal.NATIVE);
 
-            if (counter >= 5) {
-                showBannerAd.setEnabled(false);
-                Appodeal.hide(this, Appodeal.BANNER_TOP);
+                counter++;}
+
+                if (counter >= 5) {
+                    showBannerAd.setEnabled(false);
+                Appodeal.hide(MainActivity.this, Appodeal.BANNER_TOP);
+            }
             }
         });
 
@@ -168,30 +176,18 @@ public class MainActivity extends AppCompatActivity implements BannerCallbacks, 
 
             counter2++;
 
-            Appodeal.cache(this, Appodeal.NATIVE, 3);
-                nativeAds = Appodeal.getNativeAds(3);
+                Appodeal.cache(this, Appodeal.NATIVE, 1);
+                nativeAds = Appodeal.getNativeAds(1);
                 Appodeal.getAvailableNativeAdsCount();
                 RelativeLayout holder = (RelativeLayout) findViewById(R.id.native_holder);
                 NativeAdViewContentStream nativeAdView = new NativeAdViewContentStream(MainActivity.this, nativeAds.get(0));
                 holder.addView(nativeAdView);
-
-                if(counter2 >=3 ){showNativeAd.setEnabled(false);
-                    Appodeal.hide(this, Appodeal.NATIVE); }
-
-
-
-
+               // Appodeal.hide(this, Appodeal.NATIVE);
+            if(counter2 >=3 ){showNativeAd.setEnabled(false); }
                 Toast.makeText(MainActivity.this, "onNativeLoaded!", Toast.LENGTH_SHORT).show();
-
-
-
                 Appodeal.hide(this, Appodeal.BANNER_TOP);
 
-
-
-
        });
-
     }
 
     public static void setTimeout(Runnable runnable, int delay){
@@ -399,6 +395,7 @@ public class MainActivity extends AppCompatActivity implements BannerCallbacks, 
 
     private void InitViews(){
         ///showNativeAdsList= findViewById(R.id.show_native_ads);
+        ButtonHide = findViewById(R.id.buttonHide);
         showBannerAd = findViewById(R.id.show_banner);
         showNativeAd = findViewById(R.id.show_native);
         showRewardedAd = findViewById(R.id.show_rewarded);
